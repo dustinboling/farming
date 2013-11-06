@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Farm:</strong>
+  <%= @farm.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @farm.description %>
+</p>
+
+<p>
+  <strong>Farmer:</strong>
+  <%= @farm.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_farm_path(@farm) %> |
+<%= link_to 'Back', farms_path %>
