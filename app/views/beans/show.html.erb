@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @bean.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @bean.last_name %>
+</p>
+
+<p>
+  <strong>Spouse name:</strong>
+  <%= @bean.spouse_name %>
+</p>
+
+<p>
+  <strong>Street address:</strong>
+  <%= @bean.street_address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @bean.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @bean.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @bean.zip %>
+</p>
+
+<p>
+  <strong>Farm:</strong>
+  <%= @bean.farm %>
+</p>
+
+<%= link_to 'Edit', edit_bean_path(@bean) %> |
+<%= link_to 'Back', beans_path %>

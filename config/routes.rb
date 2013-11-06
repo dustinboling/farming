@@ -1,5 +1,7 @@
 Farming::Application.routes.draw do
   
+  resources :beans
+
   resources :farms
 
   devise_for :users

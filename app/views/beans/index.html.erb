@@ -1,0 +1,41 @@
+<h1>Listing beans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Spouse name</th>
+      <th>Street address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Farm</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @beans.each do |bean| %>
+      <tr>
+        <td><%= bean.first_name %></td>
+        <td><%= bean.last_name %></td>
+        <td><%= bean.spouse_name %></td>
+        <td><%= bean.street_address %></td>
+        <td><%= bean.city %></td>
+        <td><%= bean.state %></td>
+        <td><%= bean.zip %></td>
+        <td><%= bean.farm %></td>
+        <td><%= link_to 'Show', bean %></td>
+        <td><%= link_to 'Edit', edit_bean_path(bean) %></td>
+        <td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bean', new_bean_path %>
