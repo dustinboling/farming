@@ -1,5 +1,7 @@
 Farming::Application.routes.draw do
   
+  resources :crops
+
   resources :farms do
   	resources :beans
   end
