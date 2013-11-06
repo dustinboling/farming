@@ -1,10 +1,13 @@
 class BeansController < ApplicationController
+  
+  before_action :authenticate_user!
+  before_action :set_farm, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   before_action :set_bean, only: [:show, :edit, :update, :destroy]
 
   # GET /beans
   # GET /beans.json
   def index
-    @beans = Bean.all
+    @beans = @farm.beans.all
   end
 
   # GET /beans/1
@@ -14,7 +17,7 @@ class BeansController < ApplicationController
 
   # GET /beans/new
   def new
-    @bean = Bean.new
+    @bean = @farm.beans.new
   end
 
   # GET /beans/1/edit
@@ -24,11 +27,11 @@ class BeansController < ApplicationController
   # POST /beans
   # POST /beans.json
   def create
-    @bean = Bean.new(bean_params)
+    @bean = @farm.beans.new(bean_params)
 
     respond_to do |format|
       if @bean.save
-        format.html { redirect_to @bean, notice: 'Bean was successfully created.' }
+        format.html { redirect_to farm_beans_url, notice: 'Bean was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bean }
       else
         format.html { render action: 'new' }
@@ -42,7 +45,7 @@ class BeansController < ApplicationController
   def update
     respond_to do |format|
       if @bean.update(bean_params)
-        format.html { redirect_to @bean, notice: 'Bean was successfully updated.' }
+        format.html { redirect_to [@farm, @bean], notice: 'Bean was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,15 +59,19 @@ class BeansController < ApplicationController
   def destroy
     @bean.destroy
     respond_to do |format|
-      format.html { redirect_to beans_url }
+      format.html { redirect_to farm_beans_url }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_farm
+      @farm = Farm.find(params[:farm_id])
+    end
+
     def set_bean
-      @bean = Bean.find(params[:id])
+      @bean = @farm.beans.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

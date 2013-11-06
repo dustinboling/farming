@@ -27,10 +27,10 @@
         <td><%= bean.city %></td>
         <td><%= bean.state %></td>
         <td><%= bean.zip %></td>
-        <td><%= bean.farm %></td>
-        <td><%= link_to 'Show', bean %></td>
-        <td><%= link_to 'Edit', edit_bean_path(bean) %></td>
-        <td><%= link_to 'Destroy', bean, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= bean.farm.name %></td>
+        <td><%= link_to 'Show', [@farm, bean] %></td>
+        <td><%= link_to 'Edit', edit_farm_bean_path(@farm, bean) %></td>
+        <td><%= link_to 'Destroy', [@farm, bean], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Bean', new_bean_path %>
+<%= link_to 'New Bean', new_farm_bean_path(@farm) %>

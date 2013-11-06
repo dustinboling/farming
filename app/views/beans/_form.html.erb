@@ -1,4 +1,4 @@
-<%= form_for(@bean) do |f| %>
+<%= form_for([@farm, @bean]) do |f| %>
   <% if @bean.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@bean.errors.count, "error") %> prohibited this bean from being saved:</h2>
@@ -38,10 +38,6 @@
   <div class="field">
     <%= f.label :zip %><br>
     <%= f.text_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :farm_id %><br>
-    <%= f.text_field :farm_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

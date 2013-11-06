@@ -37,8 +37,8 @@
 
 <p>
   <strong>Farm:</strong>
-  <%= @bean.farm %>
+  <%= @bean.farm.name %>
 </p>
 
-<%= link_to 'Edit', edit_bean_path(@bean) %> |
-<%= link_to 'Back', beans_path %>
+<%= link_to 'Edit', edit_farm_bean_path(@farm, @bean) %> |
+<%= link_to 'Back', farm_beans_path %>

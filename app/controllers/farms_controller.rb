@@ -26,7 +26,6 @@ class FarmsController < ApplicationController
   # POST /farms
   # POST /farms.json
   def create
-    #@farm = Farm.new(farm_params)
     @farm = current_user.farms.new(farm_params)
 
     respond_to do |format|
