@@ -1,6 +1,11 @@
-<h1>Editing farm</h1>
+<div class="page-title">
+	<h4>Edit Farm</h4>
+</div>
+
+<ul class="breadcrumb">
+  <li><%= link_to 'Farms', farms_path %></li>
+  <li><%= link_to @farm.name, @farm %></li>
+  <li class="active">Edit Farm</li>
+</ul>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @farm %> |
-<%= link_to 'Back', farms_path %>

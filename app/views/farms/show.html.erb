@@ -1,21 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div class="page-title">
+	<h1><%= @farm.name %> <small><%= @farm.description %></small></h1>
+</div>
 
-<p><%= link_to 'View all farms', farms_path %></p>
 
-<h1><%= @farm.name %> Farm <small><%= link_to 'Edit', edit_farm_path(@farm) %></small></h1>
-<p><%= @farm.description %></p>
 
-<h2>Crops</h2>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading clearfix">Crops
+    <%= link_to 'Add crop', new_farm_crop_path(@farm), class: 'btn-xs btn-primary pull-right' %>
+  </div>
+  <table class="table table-hover">
 
-<table>
-  <tbody>
-    <% @farm.crops.each do |crop| %>
+    <tbody>
+      <% @farm.crops.each do |crop| %>
+        <tr>
+          <td><%= link_to crop.name, [@farm, crop] %></td>
+          <td><%= crop.description %></td>
+          <td>235 beans</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading clearfix">Beans
+    <%= link_to 'Add bean', new_farm_bean_path(@farm), class: 'btn-xs btn-primary pull-right' %>
+  </div>
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= link_to crop.name, [@farm, crop] %></td>
-        <td><%= crop.description %></td>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Crops</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @farm.crops.each do |crop| %>
+        <tr>
+          <td>Dustin and Julie Boling</td>
+          <td>13822 Claremonst St, Westminster, CA 92683</td>
+          <td>Residents</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<p><%= link_to 'Add new crop', new_farm_crop_path(@farm) %></p>
+<p><%= link_to 'Edit Farm', edit_farm_path(@farm), class: 'btn btn-default' %></p>

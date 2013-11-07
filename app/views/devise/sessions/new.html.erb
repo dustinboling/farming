@@ -1,5 +1,5 @@
 <div class="page-title">
-	<h1>Login <small>and tend to your soi beans.</small></h1>
+	<h3>Login <small>and tend to your soi beans.</small></h3>
 </div>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal', role: 'form'}) do |f| %>
@@ -30,7 +30,7 @@
 
   <div class="form-group">
 	  <div class="col-sm-offset-2 col-sm-10">
-	  	<%= f.submit "Login", class: 'btn btn-default' %><br>
+	  	<%= f.submit "Login", class: 'btn btn-primary' %><br>
 	  	<small><%= render "devise/shared/links" %></small>
 		</div>
 	</div>
