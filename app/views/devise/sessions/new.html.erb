@@ -1,17 +1,39 @@
-<h2>Sign in</h2>
+<div class="page-title">
+	<h1>Login <small>and tend to your soi beans.</small></h1>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+  <div class="form-group">
+  	<%= f.label :email, class: 'col-sm-2 control-label' %>
+  	<div class="col-sm-10">
+	  	<%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+	  </div>
+  </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <div class="form-group">
+  	<%= f.label :password, class: 'col-sm-2 control-label' %>
+  	<div class="col-sm-10">
+	  	<%= f.password_field :password, class: 'form-control' %>
+	  </div>
+  </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+		    <div class="checkbox">
+					<%= f.check_box :remember_me %><%= f.label :remember_me %>
+				</div>
+			</div>
+		</div>
+	</div>
   <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
+  <div class="form-group">
+	  <div class="col-sm-offset-2 col-sm-10">
+	  	<%= f.submit "Login", class: 'btn btn-default' %><br>
+	  	<small><%= render "devise/shared/links" %></small>
+		</div>
+	</div>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
