@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Farm:</strong>
-  <%= @farm.name %>
-</p>
+<p><%= link_to 'View all farms', farms_path %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @farm.description %>
-</p>
+<h1><%= @farm.name %> Farm <small><%= link_to 'Edit', edit_farm_path(@farm) %></small></h1>
+<p><%= @farm.description %></p>
 
-<p>
-  <strong>Farmer:</strong>
-  <%= @farm.user.email %>
-</p>
+<h2>Crops</h2>
 
-<%= link_to 'Edit', edit_farm_path(@farm) %> |
-<%= link_to 'View farms', farms_path %> |
-<%= link_to 'Add crop', new_farm_crop_path(@farm) %> |
-<%= link_to 'View crops', farm_crops_path(@farm) %>
+<table>
+  <tbody>
+    <% @farm.crops.each do |crop| %>
+      <tr>
+        <td><%= link_to crop.name, [@farm, crop] %></td>
+        <td><%= crop.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'Add new crop', new_farm_crop_path(@farm) %></p>
