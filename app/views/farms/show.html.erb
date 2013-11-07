@@ -16,4 +16,6 @@
 </p>
 
 <%= link_to 'Edit', edit_farm_path(@farm) %> |
-<%= link_to 'Back', farms_path %>
+<%= link_to 'View farms', farms_path %> |
+<%= link_to 'Add crop', new_farm_crop_path(@farm) %> |
+<%= link_to 'View crops', farm_crops_path(@farm) %>

@@ -1,9 +1,8 @@
 Farming::Application.routes.draw do
   
-  resources :crops
-
   resources :farms do
   	resources :beans
+  	resources :crops
   end
 
   devise_for :users

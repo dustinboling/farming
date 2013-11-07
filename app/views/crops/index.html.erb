@@ -1,4 +1,4 @@
-<h1>Listing crops</h1>
+<h1><%= @farm.name %> Crops</h1>
 
 <table>
   <thead>
@@ -17,10 +17,10 @@
       <tr>
         <td><%= crop.name %></td>
         <td><%= crop.description %></td>
-        <td><%= crop.farm %></td>
-        <td><%= link_to 'Show', crop %></td>
-        <td><%= link_to 'Edit', edit_crop_path(crop) %></td>
-        <td><%= link_to 'Destroy', crop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= crop.farm.name %></td>
+        <td><%= link_to 'Show', [@farm, crop] %></td>
+        <td><%= link_to 'Edit', edit_farm_crop_path(@farm, crop) %></td>
+        <td><%= link_to 'Destroy', [@farm, crop], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Crop', new_crop_path %>
+<%= link_to 'New Crop', new_farm_crop_path(@farm) %>

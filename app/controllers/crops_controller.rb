@@ -1,10 +1,13 @@
 class CropsController < ApplicationController
+  
+  before_action :authenticate_user!
+  before_action :set_farm, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   before_action :set_crop, only: [:show, :edit, :update, :destroy]
 
   # GET /crops
   # GET /crops.json
   def index
-    @crops = Crop.all
+    @crops = @farm.crops.all
   end
 
   # GET /crops/1
@@ -14,7 +17,7 @@ class CropsController < ApplicationController
 
   # GET /crops/new
   def new
-    @crop = Crop.new
+    @crop = @farm.crops.new
   end
 
   # GET /crops/1/edit
@@ -24,11 +27,11 @@ class CropsController < ApplicationController
   # POST /crops
   # POST /crops.json
   def create
-    @crop = Crop.new(crop_params)
+    @crop = @farm.crops.new(crop_params)
 
     respond_to do |format|
       if @crop.save
-        format.html { redirect_to @crop, notice: 'Crop was successfully created.' }
+        format.html { redirect_to [@farm, @crop], notice: 'Crop was successfully created.' }
         format.json { render action: 'show', status: :created, location: @crop }
       else
         format.html { render action: 'new' }
@@ -42,7 +45,7 @@ class CropsController < ApplicationController
   def update
     respond_to do |format|
       if @crop.update(crop_params)
-        format.html { redirect_to @crop, notice: 'Crop was successfully updated.' }
+        format.html { redirect_to [@farm, @crop], notice: 'Crop was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,13 +59,17 @@ class CropsController < ApplicationController
   def destroy
     @crop.destroy
     respond_to do |format|
-      format.html { redirect_to crops_url }
+      format.html { redirect_to farm_crops_url(@farm) }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_farm
+      @farm = Farm.find(params[:farm_id])
+    end
+
     def set_crop
       @crop = Crop.find(params[:id])
     end
