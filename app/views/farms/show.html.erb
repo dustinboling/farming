@@ -19,7 +19,7 @@
         <tr>
           <td><%= link_to crop.name, [@farm, crop] %></td>
           <td><%= crop.description %></td>
-          <td>235 beans</td>
+          <td><%= crop.beans.size %></td>
         </tr>
       <% end %>
     </tbody>
