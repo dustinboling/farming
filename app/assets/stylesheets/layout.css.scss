@@ -1,0 +1,23 @@
+$body-bg: #F7F3EA;
+
+$link-color: #000;
+$link-hover-color: #1C5C76;
+
+body {
+	font-family: "ProximaNova","Helvetica Neue",helvetica,arial,sans-serif;
+	font-size: 15px;
+	line-height: 21px;
+	margin: 0 40px 40px;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+body > header > nav {
+	zoom: 1;
+	clear: both;
+	position: relative;
+	padding: 29px 0 20px 0;
+	margin: 0 auto;
+	max-width: 1040px;
+	min-width: 985px;
+}
