@@ -1,69 +1,38 @@
-<div class="page-title">
+
+
+<div class="page-header">
 	<h1><%= @farm.name %> <small><%= @farm.description %></small></h1>
 </div>
 
-<ol class="breadcrumb">
-  <li><%= link_to 'Farms', farms_path %></li>
-  <li class="active"><%= @farm.name %></li>
-</ol>
-
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading clearfix">Crops
-    <%= link_to 'Add crop', new_farm_crop_path(@farm), class: 'btn-xs btn-primary pull-right' %>
-  </div>
-  <table class="table table-hover">
-
-    <tbody>
-      <% @farm.crops.each do |crop| %>
-        <tr>
-          <td><%= link_to crop.name, [@farm, crop] %></td>
-          <td><%= crop.description %></td>
-          <td><%= crop.beans.size %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<div class="panel panel-default">
+<div id="crops" class="panel panel-primary collection">
   <!-- Default panel contents -->
   <div class="panel-heading clearfix">
-    <h3 class="pull-left" style="margin:0;">Beans</h3>
-    <div class="btn-group btn-group-sm pull-right">
-      <%= link_to 'Add New', new_farm_bean_path(@farm), class: 'btn btn-default' %>
-      <%= link_to 'Show All', farm_beans_path(@farm), class: 'btn btn-default' %>
-      <div class="btn-group btn-group-sm">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          Import
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><%= link_to 'From CSV', new_farm_bean_path(@farm) %></li>
-          <li><%= link_to 'From Gmail', new_farm_bean_path(@farm) %></li>
-        </ul>
+    <h2 class="panel-title">Crops</h2>
+  </div>
+  <div class="panel-body">
+
+    <% @farm.crops.each do |crop| %>
+      <div class="col-xs-4 col-sm-3">
+        <div class="panel panel-default resource crop">
+          <a href="<%= farm_crop_path(@farm, crop) %>" class="panel-body">
+            <h3 class="panel-title"><%= crop.name %></h3>
+            <p class="panel-description"><%= crop.description %></p>
+            <small><%= crop.updated_at.strftime("Last updated on %b %d") %></small>
+            <p><%= crop.beans.size %> Beans</p>
+          </a>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="col-xs-4 col-sm-3">
+      <div class="panel panel-default resource add-new">
+        <a href="<%= new_farm_crop_path(@farm) %>" class="panel-body" style="text-align:center;">
+          <p><span class="glyphicon glyphicon-plus"></span> Plant a new crop</p>
+        </a>
       </div>
     </div>
-  </div>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Crops</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @farm.beans.each do |bean| %>
-        <tr>
-          <td><%= link_to bean.name, farm_bean_path(@farm, bean) %></td>
-          <td><%= bean.address %></td>
-          <td></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  </div>
 </div>
 
 <p><%= link_to 'Edit Farm', edit_farm_path(@farm), class: 'btn btn-default' %></p>

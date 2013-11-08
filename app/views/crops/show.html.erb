@@ -1,17 +1,45 @@
-<p>
-  <strong>Crop:</strong>
-  <%= @crop.name %>
-</p>
+<div class="page-header">
+	<h1><%= link_to @farm.name, farm_path(@farm) %> <small><%= @farm.description %></small></h1>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @crop.description %>
-</p>
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading clearfix">
+    <h2 class="panel-title" style="margin:0;"><%= @crop.name %></h2>
+  </div>
 
-<p>
-  <strong>Farm:</strong>
-  <%= @crop.farm.name %>
-</p>
+  <div class="btn-group btn-group-sm">
+    <%= link_to 'Add New', new_farm_crop_bean_path(@farm, @crop), class: 'btn btn-default' %>
+    <%= link_to 'Show All', farm_crop_beans_path(@farm, @crop), class: 'btn btn-default' %>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Import
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'From CSV', new_farm_crop_bean_path(@farm, @crop) %></li>
+        <li><%= link_to 'From Gmail', new_farm_crop_bean_path(@farm, @crop) %></li>
+      </ul>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_farm_crop_path(@farm, @crop) %> |
-<%= link_to 'Back', farm_crops_path(@farm) %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @crop.beans.each do |bean| %>
+        <tr>
+          <td><%= link_to bean.name, farm_crop_bean_path(@farm, @crop, bean) %></td>
+          <td><%= bean.address %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "Edit this crop", edit_farm_crop_path(@farm, @crop) %> |
+<%= link_to "Back to #{@crop.farm.name}", farm_path(@farm) %>

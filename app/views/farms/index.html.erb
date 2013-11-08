@@ -1,31 +1,28 @@
-<div class="page-title">
-  <h3>My Farms</h3>
+<div class="row">
+
 </div>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Farm</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @farms.each do |farm| %>
-      <tr>
-        <td><%= farm.name %></td>
-        <td><%= farm.description %></td>
-        <td><%= link_to 'Show', farm %></td>
-        <td><%= link_to 'Edit', edit_farm_path(farm) %></td>
-        <td><%= link_to 'Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
+<div class="row collection farms">
 
-<%= link_to 'New Farm', new_farm_path, class: 'btn btn-primary' %>
+  <% @farms.each do |farm| %>
+    <div class="col-xs-4 col-sm-3">
+      <div class="panel panel-default resource farm">
+        <a href="<%= farm_path(farm) %>" class="panel-body">
+          <h3 class="panel-title"><%= farm.name %></h3>
+          <p class="panel-description"><%= farm.description %></p>
+          <small><%= farm.updated_at.strftime("Last updated on %b %d") %></small>
+          <p><%= pluralize(farm.beans.size, 'Bean') %></p>
+        </a>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="col-xs-4 col-sm-3">
+    <div class="panel panel-default">
+      <a href="<%= new_farm_path %>" class="panel-body" style="text-align:center;">
+        <p><span class="glyphicon glyphicon-plus"></span> Create a New Farm</p>
+      </a>
+    </div>
+  </div>
+
+</div>

@@ -1,6 +1,6 @@
 class Bean < ActiveRecord::Base
   belongs_to :farm
-  has_many :cropages
+  has_many :cropages, dependent: :destroy
   has_many :crops, through: :cropages
 
   def name

@@ -2,12 +2,13 @@ class BeansController < ApplicationController
   
   before_action :authenticate_user!
   before_action :set_farm, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  before_action :set_crop, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   before_action :set_bean, only: [:show, :edit, :update, :destroy]
 
   # GET /beans
   # GET /beans.json
   def index
-    @beans = @farm.beans.all
+    @beans = @crop.beans.all
   end
 
   # GET /beans/1
@@ -17,7 +18,7 @@ class BeansController < ApplicationController
 
   # GET /beans/new
   def new
-    @bean = @farm.beans.new
+    @bean = @crop.beans.new
   end
 
   # GET /beans/1/edit
@@ -27,11 +28,11 @@ class BeansController < ApplicationController
   # POST /beans
   # POST /beans.json
   def create
-    @bean = @farm.beans.new(bean_params)
+    @bean = @crop.beans.new(bean_params)
 
     respond_to do |format|
       if @bean.save
-        format.html { redirect_to farm_beans_url, notice: 'Bean was successfully created.' }
+        format.html { redirect_to [@farm, @crop], notice: 'Bean was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bean }
       else
         format.html { render action: 'new' }
@@ -45,7 +46,7 @@ class BeansController < ApplicationController
   def update
     respond_to do |format|
       if @bean.update(bean_params)
-        format.html { redirect_to [@farm, @bean], notice: 'Bean was successfully updated.' }
+        format.html { redirect_to [@farm, @crop], notice: 'Bean was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -68,6 +69,10 @@ class BeansController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_farm
       @farm = Farm.find(params[:farm_id])
+    end
+
+    def set_crop
+      @crop = @farm.crops.find(params[:crop_id])
     end
 
     def set_bean
