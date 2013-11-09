@@ -1,3 +1,83 @@
 // Place all the styles related to the farms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.panel.home_tab {
+	margin-bottom: 150px;
+	padding-top: 20px;
+	min-height: 0;
+	text-shadow: 0 1px #FFF;
+}
+
+// New Farm Button/Link
+div.panel.home_tab > nav {
+	width: 150px;
+	position: absolute;
+}
+
+div.panel.home_tab > nav a {
+	position: relative;
+	display: block;
+	font-size: 13px;
+	z-index: 2;
+}
+
+div.panel.home_tab nav.farms_nav a {
+	width: 80px;
+	height: 105px;
+	margin-top: -6px;
+	background: url(https://basecamp.global.ssl.fastly.net/assets/icons/new_project-932fae5d967db334ece7ea2eb4203e13.png) no-repeat;
+}
+
+div.panel.home_tab > nav a > span {
+	position: absolute;
+	display: block;
+	text-align: center;
+	line-height: 14px;
+	color: #1C5C76;
+	text-decoration: underline;
+}
+
+div.panel.home_tab nav.farms_nav a > span {
+	left: -10px;
+	bottom: 0;
+	width: 101px;
+}
+
+// Panel
+div.panel.home_tab > div#all_farms section,
+div.panel.home_tab > section {
+	margin-left: 150px;
+}
+
+div.panel.home_tab section.farms.cards {
+	text-shadow: none;
+}
+
+div.panel.home_tab section.farms {
+	margin-bottom: 30px;
+}
+
+div.panel.home_tab section.farms.cards div.row {
+	zoom: 1;
+}
+
+div.panel.home_tab section.farms.cards div.row:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+

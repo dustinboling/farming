@@ -23,6 +23,10 @@ header {
 	margin: 0 0 10px;
 }
 
+p {
+	margin: 0 0 19px;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
@@ -49,6 +53,14 @@ body > header > nav {
 	margin: 0 auto;
 	max-width: 1040px;
 	min-width: 985px;
+}
+
+body > header > nav:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
 }
 
 // Logo
@@ -153,6 +165,12 @@ div.jumpto input[type=text] {
 }
 
 // WORKSPACE //
+div.workspace {
+	text-align: center;
+	-webkit-transition: opacity 150ms 350ms ease-in;
+	-moz-transition: opacity 150ms 350ms ease-in;
+}
+
 div.workspace > div.container {
 	margin: 0 auto;
 	width: 960px;
@@ -170,7 +188,9 @@ div.sheet {
 }
 
 div.panel {
+	position: relative;
 	min-height: 614px;
+	text-align: left;
 }
 
 // CARDS //
@@ -199,6 +219,32 @@ div.panel section.cards article.card a {
 
 div.panel section.cards a:hover {
 	text-decoration: none;
+}
+
+div.panel section.cards article.card h5 {
+	font-size: 19px;
+	margin: 0 0 3px;
+	line-height: 1.1em;
+	word-wrap: break-word;
+}
+
+div.panel.home_tab section.cards a:hover h5 {
+	color: #000;
+}
+
+div.panel.home_tab section.cards article.card p {
+	font-size: 16px;
+	line-height: 1.2em;
+	word-wrap: break-word;
+	color: #AA9C84;
+}
+
+div.panel.home_tab section.cards article.card p.description {
+	margin-bottom: 5px;
+}
+
+div.panel.home_tab section.cards article.card p.updated_at {
+	font-size: 12px;
 }
 
 
