@@ -1,28 +1,35 @@
-<div class="row">
+<div class="panel farm_index">
+  
+  <section class="cards">
+    <div class="row">
+      <% @farms.each do |farm| %>
+        <article class="card">
 
-</div>
-<br>
-<div class="row collection farms">
+          <a href="<%= farm_path(farm) %>" class="farm_card">
+            <h5><%= farm.name %></h5>
+            <p class="farm_description"><%= farm.description %></p>
+            <p class="updated_at">
+              <time datetime="<%= farm.updated_at %>"><%= farm.updated_at.strftime("Last updated on %b %d") %></time>
+            </p>
+            <p class="beans">
+              <%= pluralize(farm.beans.size, 'Bean') %>
+            </p>
+            <div class="crops">
+              <%= pluralize(farm.crops.size, 'Crop') %>
+            </div>
+          </a>
+        </article>
+      <% end %>
 
-  <% @farms.each do |farm| %>
-    <div class="col-xs-4 col-sm-3">
-      <div class="panel panel-default resource farm">
-        <a href="<%= farm_path(farm) %>" class="panel-body">
-          <h3 class="panel-title"><%= farm.name %></h3>
-          <p class="panel-description"><%= farm.description %></p>
-          <small><%= farm.updated_at.strftime("Last updated on %b %d") %></small>
-          <p><%= pluralize(farm.beans.size, 'Bean') %></p>
+      <article class="card">
+        <a href="<%= new_farm_path %>" class="farm_card">
+          <h5>Start a new farm</h5>
+          <p class="farm_description">Click here to start a new farm</p>
         </a>
-      </div>
-    </div>
-  <% end %>
+      </article>
 
-  <div class="col-xs-4 col-sm-3">
-    <div class="panel panel-default">
-      <a href="<%= new_farm_path %>" class="panel-body" style="text-align:center;">
-        <p><span class="glyphicon glyphicon-plus"></span> Create a New Farm</p>
-      </a>
     </div>
-  </div>
-
+  </section>
+  
 </div>
+

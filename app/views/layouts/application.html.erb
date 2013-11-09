@@ -7,70 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= render "layouts/header" %>
+	
+	<div id="workspace" class="workspace">
+		<div class="container">
 
-<header>
-  
-  <nav role="navigation">
+			<%= render "layouts/notices" %>
 
-	  <!-- Brand and toggle get grouped for better mobile display -->
-	  <div class="navbar-header">
-	    <%= link_to raw('<span class="glyphicon glyphicon-tree-deciduous"></span> SOi Farm'), root_path, class: 'navbar-brand' %>
-	  </div>
+			<%= yield %>
 
-	  <!-- Collect the nav links, forms, and other content for toggling -->
-	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	    
-	  	<% if user_signed_in? %>
-		    <ul class="nav navbar-nav">
-		      <li>
-		        <%= link_to 'Farms', farms_path %>
-		      </li>
-		    </ul>
-
-		    <ul class="nav navbar-nav navbar-right">
-		      <li class="dropdown">
-		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <b class="caret"></b></a>
-		        <ul class="dropdown-menu">
-		          <li><%= link_to raw('<span class="glyphicon glyphicon-cog"></span> My Profile'), edit_user_registration_path %></li>
-		          <li class="divider"></li>
-		          <li><%= link_to raw('<span class="glyphicon glyphicon-log-out"></span> Logout'), destroy_user_session_path, method: :delete %></li>
-		        </ul>
-		      </li>
-		    </ul>
-
-	    <% else %>
-
-	    	<ul class="nav navbar-nav navbar-right">
-		      <li class="dropdown">
-		        <li><%= link_to 'Login', new_user_session_path %></li>
-		        <li><%= link_to 'Register', new_user_registration_path %></li>
-		      </li>
-		    </ul>
-
-	    <% end %>
-
-	  </div><!-- /.navbar-collapse -->
-  </nav>
-</header>
-
-<main id="main" class="container">
-
-		<% if flash[:notice] %>
-			<div class="alert alert-success alert-dismissable">
-			  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			  <%= flash[:notice] %>
-			</div>
-		<% end %>
-
-		<% if flash[:alert] %>
-			<div class="alert alert-warning alert-dismissable">
-			  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			  <strong>Oh snap!</strong> <%= flash[:alert] %>
-			</div>
-		<% end %>
-
-		<%= yield %>
-
-	</main>
+		</div>
+	</div>
 </body>
 </html>

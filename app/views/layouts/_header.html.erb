@@ -1,0 +1,37 @@
+<header>
+  <nav class="">
+
+    <div class="logo">
+        <%= link_to "SOi Farm", root_path %>
+    </div>
+
+    <div class="global_links">
+      <%= link_to 'Farms', farms_path, class: "topnav_root" %>
+      <a class="topnav_tasks" href="/tasks">Tasks</a>
+      <a class="topnav_timeline" href="/progress">Progress</a>
+    </div>
+
+		<% if user_signed_in? %>
+			<div class="current_user">
+				<ul>
+					<li><%= link_to "Account", edit_user_registration_path %></li>
+		      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+				</ul>
+			</div>
+
+		<% else %>
+			<div class="no_user">
+				<ul>
+					<li><%= link_to 'Login', new_user_session_path %></li>
+					<li><%= link_to 'Register', new_user_registration_path %></li>
+				</ul>
+			</div>
+		<% end %>
+
+    <div class="jumpto" data-behavior="jumpto">
+			<input type="text" placeholder="Jump to a farm, crop, task, or search...">
+		</div>
+
+  </nav>
+</header>
+
