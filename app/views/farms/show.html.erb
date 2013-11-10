@@ -1,38 +1,81 @@
+<div class="panel sheet farm active">
+  <title><%= @farm.name %></title>
 
+  <header>
+    <div class="header_links">
+      <a href="/1789373/projects/3336506-beck-co/accesses">
+        <span class="link">Hire more farmhands</span><br>
+        <span class="detail">2 people working this farm</span>
+      </a>
+      <a href="/1789373/projects/3336506-beck-co/accesses">
+        <span class="link">Destroy this farm</span><br>
+        <span class="detail">uproot your soi beans and quit</span>
+      </a>
+    </div>
+    <h1><%= @farm.name %></h1>
 
-<div class="page-header">
-	<h1><%= @farm.name %> <small><%= @farm.description %></small></h1>
-</div>
+    <div class="farm_toolbar">
+      
+      <div class="tools">
 
-<div id="crops" class="panel panel-primary collection">
-  <!-- Default panel contents -->
-  <div class="panel-heading clearfix">
-    <h2 class="panel-title">Crops</h2>
-  </div>
-  <div class="panel-body">
-
-    <% @farm.crops.each do |crop| %>
-      <div class="col-xs-4 col-sm-3">
-        <div class="panel panel-default resource crop">
-          <a href="<%= farm_crop_path(@farm, crop) %>" class="panel-body">
-            <h3 class="panel-title"><%= crop.name %></h3>
-            <p class="panel-description"><%= crop.description %></p>
-            <small><%= crop.updated_at.strftime("Last updated on %b %d") %></small>
-            <p><%= crop.beans.size %> Beans</p>
+        <div class="group">
+          <a href="/topics">
+            <span class=""><strong>18 Discussions</strong></span>
+          </a>
+          <a href="/todolists">
+            <span class=""><strong>1 To-do</strong></span>
+          </a>
+          <a href="/attachments">
+            <span class=""><strong>24 Files</strong></span>
+          </a>
+          <a href="calendar_events">
+            <span class=""><strong>Dates</strong></span>
+          </a>
+        </div>
+        <div class="group not_in_farm">
+          <span class="label">Add the first:</span>
+          <a href="/documents">
+          <span class="">Text document</span>
           </a>
         </div>
       </div>
+    </div>
+  </header>
+
+  <section class="crops cards">
+    <div class="row">
+      <% @farm.crops.each do |crop| %>
+        <article class="card">
+
+          <a href="<%= farm_crop_path(@farm, crop) %>" class="crop_card">
+            <h5><%= crop.name %></h5>
+            <p class="description"><%= crop.description %></p>
+            <p class="updated_at">
+              <time datetime="<%= crop.updated_at %>"><%= crop.updated_at.strftime("Last updated on %b %d") %></time>
+            </p>
+            <p class="beans">
+              <%= pluralize(crop.beans.size, 'Bean') %>
+            </p>
+            <div class="fertilizers">
+              <%= pluralize(crop.beans.size, 'TODO') %>
+            </div>
+          </a>
+        </article>
+      <% end %>
+    </div>
+  </section>
+</div>
+<%= @farm.name %>
+<%= @farm.description %>
+
+    <% @farm.crops.each do |crop| %>
+      
+          <%= link_to "Crop", farm_crop_path(@farm, crop) %>
+            <%= crop.name %>
+            <%= crop.description %>
+            <%= crop.updated_at.strftime("Last updated on %b %d") %>
+            <%= crop.beans.size %>
     <% end %>
 
-    <div class="col-xs-4 col-sm-3">
-      <div class="panel panel-default resource add-new">
-        <a href="<%= new_farm_crop_path(@farm) %>" class="panel-body" style="text-align:center;">
-          <p><span class="glyphicon glyphicon-plus"></span> Plant a new crop</p>
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<p><%= link_to 'Edit Farm', edit_farm_path(@farm), class: 'btn btn-default' %></p>
+<%= link_to 'New Farm', new_farm_crop_path(@farm) %>
+<%= link_to 'Edit Farm', edit_farm_path(@farm) %>

@@ -74,8 +74,8 @@ body > header div.logo > a {
 	display: block;
 	padding: 0;
 	height: 41px;
-	width: 138px;
-	background: url(https://basecamp.global.ssl.fastly.net/assets/logos/bc_logo-ec81a6fe1135ede4709f833309889ebe.png) no-repeat center top;
+	width: 115px;
+	background: image-url("soifarm-logo.png") no-repeat center top;
 }
 
 // Global links
@@ -245,6 +245,15 @@ div.panel.home_tab section.cards article.card p.description {
 
 div.panel.home_tab section.cards article.card p.updated_at {
 	font-size: 12px;
+}
+
+// Sheet
+div.sheet > header h1,
+div.sheet div.sheet_body > section > header h1,
+div.sheet div.sheet_body > div > section > header h1 {
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: normal;
 }
 
 

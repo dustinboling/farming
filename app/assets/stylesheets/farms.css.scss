@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.panel.home_tab {
+div.panel {
 	margin-bottom: 150px;
 	padding-top: 20px;
 	min-height: 0;
@@ -10,26 +10,26 @@ div.panel.home_tab {
 }
 
 // New Farm Button/Link
-div.panel.home_tab > nav {
+div.panel > nav {
 	width: 150px;
 	position: absolute;
 }
 
-div.panel.home_tab > nav a {
+div.panel > nav a {
 	position: relative;
 	display: block;
 	font-size: 13px;
 	z-index: 2;
 }
 
-div.panel.home_tab nav.farms_nav a {
+div.panel nav.farms_nav a {
 	width: 80px;
 	height: 105px;
 	margin-top: -6px;
 	background: url(https://basecamp.global.ssl.fastly.net/assets/icons/new_project-932fae5d967db334ece7ea2eb4203e13.png) no-repeat;
 }
 
-div.panel.home_tab > nav a > span {
+div.panel > nav a > span {
 	position: absolute;
 	display: block;
 	text-align: center;
@@ -38,31 +38,31 @@ div.panel.home_tab > nav a > span {
 	text-decoration: underline;
 }
 
-div.panel.home_tab nav.farms_nav a > span {
+div.panel nav.farms_nav a > span {
 	left: -10px;
 	bottom: 0;
 	width: 101px;
 }
 
 // Panel
-div.panel.home_tab > div#all_farms section,
-div.panel.home_tab > section {
+div.panel > div#all_farms section,
+div.panel > section {
 	margin-left: 150px;
 }
 
-div.panel.home_tab section.farms.cards {
+div.panel section.farms.cards {
 	text-shadow: none;
 }
 
-div.panel.home_tab section.farms {
+div.panel section.farms {
 	margin-bottom: 30px;
 }
 
-div.panel.home_tab section.farms.cards div.row {
+div.panel section.farms.cards div.row {
 	zoom: 1;
 }
 
-div.panel.home_tab section.farms.cards div.row:after {
+div.panel section.farms.cards div.row:after {
 	content: ".";
 	display: block;
 	height: 0;
@@ -71,8 +71,20 @@ div.panel.home_tab section.farms.cards div.row:after {
 }
 
 
-
-
+// FARM //
+div.sheet.farm > header h1 {
+	font-size: 24px;
+	line-height: 28px;
+	min-height: 29px;
+	color: #000;
+	font-weight: bold;
+	margin-bottom: 3px;
+	display: inline-block;
+	position: relative;
+	text-rendering: auto;
+	word-wrap: break-word;
+	max-width: 600px;
+}
 
 
 

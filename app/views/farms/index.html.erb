@@ -1,7 +1,7 @@
-<div class="panel home_tab farm_index">
+<div class="panel farm_index">
 
   <nav class="farms_nav">
-    <a href="#"><span>New Farm</span></a>
+    <a href="<%= new_farm_path %>"><span>New Farm</span></a>
   </nav>
   
   <div id="all_farms">
@@ -26,13 +26,6 @@
             </a>
           </article>
         <% end %>
-
-        <article class="card">
-          <a href="<%= new_farm_path %>" class="farm_card">
-            <h5>Start a new farm</h5>
-            <p class="farm_description">Click here to start a new farm</p>
-          </a>
-        </article>
 
       </div>
     </section>
