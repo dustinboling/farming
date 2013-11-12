@@ -1,7 +1,7 @@
 class Bean < ActiveRecord::Base
   belongs_to :farm
-  has_many :cropages, dependent: :destroy
-  has_many :crops, through: :cropages
+  has_many :seedings, dependent: :destroy
+  has_many :crops, through: :seedings
 
   def name
   	if spouse_name?
