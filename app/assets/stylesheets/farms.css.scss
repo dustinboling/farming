@@ -50,25 +50,66 @@ div.panel > section {
 	margin-left: 150px;
 }
 
-div.panel section.farms.cards {
+div.panel section.cards {
 	text-shadow: none;
 }
 
-div.panel section.farms {
+div.panel section {
 	margin-bottom: 30px;
 }
 
-div.panel section.farms.cards div.row {
+div.panel section.cards div.row {
 	zoom: 1;
 }
 
-div.panel section.farms.cards div.row:after {
+div.panel section.cards div.row:after {
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
 }
+
+// HEADER //
+div.sheet > header {
+	margin: 0;
+	padding: 30px 30px 0px 30px;
+	position: relative;
+	text-rendering: optimizeLegibility;
+}
+
+div.sheet > header div.toolbar {
+	margin-top: 10px;
+	clear: both;
+	text-rendering: auto;
+}
+
+div.sheet > header div.tools {
+	border-top: 1px solid #DEDEDE;
+	border-bottom: 1px solid #DEDEDE;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+div.sheet > header div.tools div.group {
+	float: left;
+	padding: 5px 0;
+	font-size: 14px;
+}
+
+div.sheet > header div.tools div.group.tools_in + div.tools_not_in {
+	border-left: 1px solid #ECECEC;
+	padding-left: 15px;
+}
+
+div.sheet > header div.tools a {
+	color: #1C5C76;
+	text-decoration: underline;
+	float: left;
+	margin-right: 15px;
+	padding: 0;
+}
+
 
 
 // FARM //

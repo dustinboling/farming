@@ -2,45 +2,46 @@
   <title><%= @farm.name %></title>
 
   <header>
-    <div class="header_links">
-      <a href="/1789373/projects/3336506-beck-co/accesses">
-        <span class="link">Hire more farmhands</span><br>
-        <span class="detail">2 people working this farm</span>
-      </a>
-      <a href="/1789373/projects/3336506-beck-co/accesses">
-        <span class="link">Destroy this farm</span><br>
-        <span class="detail">uproot your soi beans and quit</span>
-      </a>
-    </div>
     <h1><%= @farm.name %></h1>
 
-    <div class="farm_toolbar">
+    <div class="toolbar">
       
       <div class="tools">
 
-        <div class="group">
+        <div class="group tools_in">
           <a href="/topics">
-            <span class=""><strong>18 Discussions</strong></span>
+            <span class=""><strong>18 Crops</strong></span>
           </a>
           <a href="/todolists">
             <span class=""><strong>1 To-do</strong></span>
           </a>
           <a href="/attachments">
-            <span class=""><strong>24 Files</strong></span>
+            <span class=""><strong>24 Notes</strong></span>
           </a>
           <a href="calendar_events">
             <span class=""><strong>Dates</strong></span>
           </a>
         </div>
-        <div class="group not_in_farm">
+
+        <div class="group tools_not_in">
           <span class="label">Add the first:</span>
           <a href="/documents">
-          <span class="">Text document</span>
+            <span class="">Text document</span>
           </a>
         </div>
+
       </div>
     </div>
   </header>
+
+  <div class="sheet_body">
+    <section class="crops">
+      <header>
+        <h1>Crops</h1>
+      </header>
+
+    </section>
+  </div>
 
   <section class="crops cards">
     <div class="row">
