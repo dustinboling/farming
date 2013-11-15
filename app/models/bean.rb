@@ -2,6 +2,7 @@ class Bean < ActiveRecord::Base
   belongs_to :farm
   has_many :seedings, dependent: :destroy
   has_many :crops, through: :seedings
+  has_many :comments, as: :commentable
 
   def name
   	if spouse_name?
