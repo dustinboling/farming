@@ -8,15 +8,10 @@
 </head>
 <body>
 <%= render "layouts/header" %>
-	
-	<div id="workspace" class="workspace">
-		<div class="container">
 
-			<%= render "layouts/notices" %>
+		<%= render "layouts/notices" %>
+		
+		<%= yield %>
 
-			<%= yield %>
-
-		</div>
-	</div>
 </body>
 </html>

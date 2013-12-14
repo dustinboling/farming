@@ -1,82 +1,31 @@
-<div class="panel sheet farm active">
-  <title><%= @farm.name %></title>
+<h1>The <%= @farm.name %> Farm</h1>
+<% if( @farm.description? ) %>
+  <p><%= @farm.description %></p>
+<% end %>
+<p><%= @farm.updated_at.strftime("Last updated on %b %d") %></p>
 
-  <header>
-    <h1><%= @farm.name %></h1>
+<h2><%= @farm.name %> crops:</h2>
+<ul>
+  <% @farm.crops.each do |crop| %>
 
-    <div class="toolbar">
-      
-      <div class="tools">
-
-        <div class="group tools_in">
-          <a href="/topics">
-            <span class=""><strong>18 Crops</strong></span>
-          </a>
-          <a href="/todolists">
-            <span class=""><strong>1 To-do</strong></span>
-          </a>
-          <a href="/attachments">
-            <span class=""><strong>24 Notes</strong></span>
-          </a>
-          <a href="calendar_events">
-            <span class=""><strong>Dates</strong></span>
-          </a>
-        </div>
-
-        <div class="group tools_not_in">
-          <span class="label">Add the first:</span>
-          <a href="/documents">
-            <span class="">Text document</span>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </header>
-
-  <div class="sheet_body">
-    <section class="crops">
-      <header>
-        <h1>Crops</h1>
-      </header>
-
-    </section>
-  </div>
-
-  <section class="crops cards">
-    <div class="row">
-      <% @farm.crops.each do |crop| %>
-        <article class="card">
-
-          <a href="<%= farm_crop_path(@farm, crop) %>" class="crop_card">
-            <h5><%= crop.name %></h5>
-            <p class="description"><%= crop.description %></p>
-            <p class="updated_at">
-              <time datetime="<%= crop.updated_at %>"><%= crop.updated_at.strftime("Last updated on %b %d") %></time>
-            </p>
-            <p class="beans">
-              <%= pluralize(crop.beans.size, 'Bean') %>
-            </p>
-            <div class="fertilizers">
-              <%= pluralize(crop.beans.size, 'TODO') %>
-            </div>
-          </a>
-        </article>
+    <li>
+      <strong><%= link_to crop.name, farm_crop_path(@farm, crop) %></strong><br>
+      <% if( crop.description? ) %>
+        <%= crop.description %><br>
       <% end %>
-    </div>
-  </section>
-</div>
-<%= @farm.name %>
-<%= @farm.description %>
-
-    <% @farm.crops.each do |crop| %>
       
-          <%= link_to "Crop", farm_crop_path(@farm, crop) %>
-            <%= crop.name %>
-            <%= crop.description %>
-            <%= crop.updated_at.strftime("Last updated on %b %d") %>
-            <%= crop.beans.size %>
+      <%= pluralize(crop.beans.size, 'Bean') %><br>
+      <%= crop.updated_at.strftime("Last updated on %b %d") %>
+    </li>
+    <li>
+      <%= link_to 'Plant a New Crop', new_farm_crop_path(@farm) %><br><br>
+    </li>
+
+    <% if( @farm.crops.empty? ) %>
+      <li><%= link_to 'Add your first crop', new_farm_crop_path(@farm) %></li>
     <% end %>
 
-<%= link_to 'New Farm', new_farm_crop_path(@farm) %>
-<%= link_to 'Edit Farm', edit_farm_path(@farm) %>
+  <% end %>
+</ul>
+
+<p><%= link_to 'New Farm', new_farm_path %> | <%= link_to 'Edit Farm', edit_farm_path(@farm) %> | <%= link_to 'Delete Farm', farm_path(@farm), :method => :delete, :confirm => "Are you sure you want to delete your #{@farm.name} farm?" %></p>

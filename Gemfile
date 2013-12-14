@@ -30,8 +30,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
 
-# https://github.com/slim-template/slim
-gem 'slim'
+gem 'haml'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -46,4 +46,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'haml-rails'
 end
+

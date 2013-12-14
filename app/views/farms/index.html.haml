@@ -1,0 +1,11 @@
+
+%ul
+	- @farms.each do |farm|
+		%li
+			%a{ title: farm.name, href: farm_path(farm) }= farm.name
+			%p= farm.description
+			%p= farm.updated_at.strftime("Last updated on %b %d")
+			%p= pluralize(farm.beans.size, 'Bean')
+			%p= pluralize(farm.crops.size, 'Crop')
+
+%a{ title: 'New Farm', href: new_farm_path } New Farm
