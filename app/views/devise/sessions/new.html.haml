@@ -1,0 +1,24 @@
+.page-title
+  %h3
+    Login
+    %small and tend to your soi beans.
+= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal', role: 'form'}) do |f|
+  .form-group
+    = f.label :email, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.email_field :email, :autofocus => true, class: 'form-control'
+  .form-group
+    = f.label :password, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.password_field :password, class: 'form-control'
+  - if devise_mapping.rememberable?
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        .checkbox
+          = f.check_box :remember_me
+          = f.label :remember_me
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Login", class: 'btn btn-primary'
+      %br/
+      %small= render "devise/shared/links"

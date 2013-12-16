@@ -1,0 +1,16 @@
+= form_for(@farm) do |f|
+  - if @farm.errors.any?
+    = pluralize(@farm.errors.count, "error")
+    prohibited this farm from being saved:
+    - @farm.errors.full_messages.each do |msg|
+      = msg
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
+    = f.label :description
+    %br/
+    = f.text_area :description, { placeholder: "optional" }
+  = f.submit nil
+  = link_to 'Cancel', farms_path

@@ -1,0 +1,19 @@
+%h1
+  The #{link_to @farm.name, farm_path(@farm)} Farm
+  %small= @farm.description
+%h2
+  The #{@crop.name} Crop
+%p
+  = @farm.updated_at.strftime("Crop last updated on %b %d")
+  | #{link_to "Edit", edit_farm_crop_path(@farm, @crop)} | #{link_to 'Plant a new crop', new_farm_crop_path(@farm)}
+%h3
+  Beans planted in the #{@crop.name} crop:
+%ul
+  - if( @crop.beans.any? )
+    - @crop.beans.each do |bean|
+      %li
+        = link_to bean.name, farm_crop_bean_path(@farm, @crop, bean)
+        | #{bean.address}
+    %li= link_to 'Plant a new bean', new_farm_crop_bean_path(@farm, @crop)
+  - else
+    %li= link_to 'Plant your first bean!', new_farm_crop_bean_path(@farm, @crop)

@@ -1,0 +1,9 @@
+- if flash[:notice]
+  .alert.alert-success.alert-dismissable
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+    = flash[:notice]
+- if flash[:alert]
+  .alert.alert-warning.alert-dismissable
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+    %strong Oh snap!
+    = flash[:alert]

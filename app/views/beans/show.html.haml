@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong First name:
+  = @bean.first_name
+%p
+  %strong Last name:
+  = @bean.last_name
+%p
+  %strong Spouse name:
+  = @bean.spouse_name
+%p
+  %strong Street address:
+  = @bean.street_address
+%p
+  %strong City:
+  = @bean.city
+%p
+  %strong State:
+  = @bean.state
+%p
+  %strong Zip:
+  = @bean.zip
+%p
+  %strong Farm:
+  = @bean.farm.name
+= link_to 'Edit', edit_farm_bean_path(@farm, @bean)
+|
+\#{link_to 'Back', farm_beans_path}

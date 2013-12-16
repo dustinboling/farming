@@ -1,0 +1,7 @@
+.page-title
+  %h4 Edit Farm
+%ul.breadcrumb
+  %li= link_to 'Farms', farms_path
+  %li= link_to @farm.name, @farm
+  %li.active Edit Farm
+= render 'form'

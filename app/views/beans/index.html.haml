@@ -1,0 +1,36 @@
+.page-title
+  %h1
+    = @farm.name
+    Beans
+%ol.breadcrumb
+  %li= link_to 'Farms', farms_path
+  %li= link_to @farm.name, farm_path(@farm)
+  %li.active Beans
+%table.table.table-hover
+  %thead
+    %tr
+      %th First name
+      %th Last name
+      %th Spouse name
+      %th Street address
+      %th City
+      %th State
+      %th Zip
+      %th
+      %th
+      %th
+  %tbody
+    - @beans.each do |bean|
+      %tr
+        %td= bean.first_name
+        %td= bean.last_name
+        %td= bean.spouse_name
+        %td= bean.street_address
+        %td= bean.city
+        %td= bean.state
+        %td= bean.zip
+        %td= link_to 'Show', [@farm, bean]
+        %td= link_to 'Edit', edit_farm_bean_path(@farm, bean)
+        %td= link_to 'Destroy', [@farm, bean], method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Bean', new_farm_crop_bean_path(@farm)

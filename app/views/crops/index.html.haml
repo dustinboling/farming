@@ -1,0 +1,23 @@
+%h1
+  = @farm.name
+  Crops
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Farm
+      %th
+      %th
+      %th
+  %tbody
+    - @crops.each do |crop|
+      %tr
+        %td= crop.name
+        %td= crop.description
+        %td= crop.farm.name
+        %td= link_to 'Show', [@farm, crop]
+        %td= link_to 'Edit', edit_farm_crop_path(@farm, crop)
+        %td= link_to 'Destroy', [@farm, crop], method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Crop', new_farm_crop_path(@farm)
